@@ -6,3 +6,5 @@ Integrantes:
   -Muñiz Herrera Natalia
   -Rojas Soberano Gabriela Montserrat
   -Velázquez Moreno Salvador
+
+Archivo final de proyecto: LectorCodigo.apk
