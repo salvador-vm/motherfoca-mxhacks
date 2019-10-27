@@ -1,27 +1,24 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import React, {Component} from 'react';
+import { View } from 'react-native';
+import QRScannerView from 'react-native-qrcode-scanner-view';
 
-export default function LinksScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
-    </ScrollView>
-  );
+export default class DefaultScreen extends Component {
+
+    renderTitleBar = () => <Text style={{color:'white',textAlign:'center',padding:16}}>Title</Text>
+
+    renderMenu = () => <Text style={{color:'white',textAlign:'center',padding:16}}>Menu</Text>
+
+    barcodeReceived = (event) => { console.log('Type: ' + event.type + '\nData: ' + event.data) };
+
+    render() {
+        return (
+           <View style={{flex:1}}>
+            <QRScannerView
+                onScanResult={ this.barcodeReceived }
+                renderHeaderView={ this.renderTitleBar }
+                renderFooterView={ this.renderMenu }
+                scanBarAnimateReverse={ true } />
+           </View>
+        )
+    }
 }
-
-LinksScreen.navigationOptions = {
-  title: 'Links',
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
